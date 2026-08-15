@@ -62,9 +62,9 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: ${{ steps.pnpm-store.outputs.path }}
-          key: ${{ runner.os }}-node-${{ env.PRIMARY_NODE_VERSION }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ env.PRIMARY_NODE_VERSION }}-pnpm-
+            ${{ runner.os }}-pnpm-
 
       - name: Install (immutable)
         run: pnpm install --frozen-lockfile

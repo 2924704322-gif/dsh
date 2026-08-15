@@ -15,6 +15,15 @@ updates:
     labels:
       - "kind/dependency"
       - "area/infra"
+    # Group all patch/minor bumps into one PR so the lockfile hash (and every
+    # cache key derived from it) changes far less often than daily per-package
+    # PRs. Major bumps stay individual so breaking changes review separately.
+    groups:
+      npm-patch-minor:
+        applies-to: version-updates
+        update-types:
+          - patch
+          - minor
 
   - package-ecosystem: "uv"
     directory: "/python/sdk"
